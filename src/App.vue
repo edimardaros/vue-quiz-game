@@ -1,6 +1,8 @@
 <template>
   <div>
 
+    <ScoreBoard />
+
     <template v-if="question">
 
       <h1 v-html="this.question">
@@ -46,8 +48,14 @@
 // https://opentdb.com/api.php?amount=1&category=18
 
 
+import ScoreBoard from '@/components/ScoreBoard.vue'
 export default {
+
   name: 'App',
+  
+  components: {
+    ScoreBoard
+  },
 
   data() {
     return {
@@ -103,9 +111,7 @@ export default {
     this.getNewQuestion();
   },
 
-  components: {
-    
-  }
+  
 }
 </script>
 
