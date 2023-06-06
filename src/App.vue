@@ -26,7 +26,15 @@ export default {
     return {
       question: undefined,
       incorrectAnswers: undefined,
-      correctAnswer: undefined
+      correctAnswer: undefined,
+    }
+  },
+
+  computed: {
+    answers() {
+      var answers = JSON.parse( JSON.stringify(this.incorrectAnswers) );
+      answers.push(this.correctAnswer);
+      return answers;
     }
   },
 
