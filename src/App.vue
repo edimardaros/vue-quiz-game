@@ -10,17 +10,20 @@
         <input 
           type="radio"
           name="options"
-          value="answer">
+          :value="answer"
+          v-model="this.chosen_answer">
         <label v-html="answer"></label> <br>
         <!-- <label>{{ answer }}</label> <br> -->
   
       </template>
+
+      <button @click="this.submitAnswer()" class="send" type="button">Send</button>
+
     </template>
 
 
     
 
-    <button class="send" type="button">Send</button>
 
   </div>
 </template>
@@ -38,6 +41,7 @@ export default {
       question: undefined,
       incorrectAnswers: undefined,
       correctAnswer: undefined,
+      chosen_answer: undefined,
     }
   },
 
@@ -47,6 +51,21 @@ export default {
       answers.splice( Math.round(Math.random() * answers.length) , 0, this.correctAnswer);
       return answers;
     }
+  },
+
+  methods: {
+    submitAnswer() {
+      if (!this.chosen_answer) {
+        alert("Pick one of the options!")
+      } else {
+        if (this.chosen_answer == this.correctAnswer) {
+          alert("Correct!");
+        } else {
+          alert("Wrong!");
+        }
+      }
+    },
+
   },
 
   created() {
